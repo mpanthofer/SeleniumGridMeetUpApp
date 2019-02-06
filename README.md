@@ -14,7 +14,7 @@ Run at root of project docker-compose up or docker-compose up -d
 
 ## STARTING THE DOTNET APP
 
-Run docker exec -it <nameoftestcoreimagecontainer> bash
+Run docker exec -it dotnetcontainername bash
 
 Run dotnet restore
 
@@ -26,7 +26,7 @@ Run dotnet run
 
 ## RUN E2E & UI TESTS
 
-Run docker exec -it <nameofcucumberprotestcontainer> bash
+Run docker exec -it protractorcontainername bash
 
 Run npm install
 
