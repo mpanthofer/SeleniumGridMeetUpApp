@@ -16,7 +16,7 @@ namespace MeetUpApp.Models
         [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
 
-        public string NickName { get; set; }
+        public string NicName { get; set; }
 
         [Required(ErrorMessage = "Age is required")]
         public int Age { get; set; }

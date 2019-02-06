@@ -30,7 +30,7 @@ namespace MeetUpApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveVolunteer([Bind("Name,NickName,Age,Ethnicity,Email,PhoneNumber")] Volunteer volunteer)
+        public async Task<IActionResult> SaveVolunteer([Bind("Name,NicName,Age,Ethnicity,Email,PhoneNumber")] Volunteer volunteer)
         {
             if (ModelState.IsValid)
             {

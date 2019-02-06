@@ -3,14 +3,16 @@ using MeetUpApp.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MeetUpApp.Migrations
 {
     [DbContext(typeof(VolunteerContext))]
-    partial class VolunteerContextModelSnapshot : ModelSnapshot
+    [Migration("20190206203246_Changed_Name")]
+    partial class Changed_Name
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
