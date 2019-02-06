@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Docker Meet Up App Information</h1>
+    <p>Download project from github -  <a href="">Selenium Grid app</a>.</p>
+    <p>Docker Meetup Link -  <a href="https://events.docker.com/events/details/docker-milwaukee-presents-e2e-testing-with-selenium-grid-docker/">E2E Testing with Selenium-Grid & Docker</a>.</p>
+    <p>Nvisia -  <a href="https://www.nvisia.com/ntc">Check out Nvisia</a>.</p>
+    <p>Key Note Speaker -  <a href="https://www.linkedin.com/in/timothy-liebl-25691177">Tim Liebl's Linkedin profile</a>.</p>
+    <br />
+    <h1 class="display-4">Agenda</h1>
+    <br />
+</div>
+<div class="row  offset-lg-3">
+    <div class="col-4">
+        <!-- List group -->
+        <div class="list-group" id="myList" role="tablist">
+            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Demo the app</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Run Selenium Grid</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Write a basic UI test</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Write a basic E2E test</a>
+        </div>
+    </div>
+    <div class="col-8">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="home" role="tabpanel">First, we are going to do a quick demo of the volunteer application.</div>
+            <div class="tab-pane" id="profile" role="tabpanel">Second, we are going to run Selenium Grid and take a look at the Hub and Nodes.</div>
+            <div class="tab-pane" id="messages" role="tabpanel">Third, we are going to write a basic UI test. We will then run the test using Selenium Grid.</div>
+            <div class="tab-pane" id="settings" role="tabpanel">Finally, we will write a basic end to end test. We will run the test using Selenuim Grid.</div>
+        </div>
+    </div>
+</div>

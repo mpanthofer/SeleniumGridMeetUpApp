@@ -1,0 +1,62 @@
+#Mainter : Promode
+version: '2.4'
+
+services:
+    progrid2:
+        image: selenium/hub
+        platform: linux
+        privileged: true
+        ports:
+            - 4444
+        environment:
+            - GRID_TIMEOUT=240000
+            - GRID_BROWSER_TIMEOUT=240000
+        networks:
+            - selenuim_grid_demo
+
+    nodechrome2:
+        image: selenium/node-chrome-debug
+        platform: linux
+        privileged: true
+        depends_on:
+            - progrid2
+        ports:
+            - 5900
+        environment:
+            - HUB_PORT_4444_TCP_ADDR=progrid2
+            - HUB_PORT_4444_TCP_PORT=4444
+        networks:
+            - selenuim_grid_demo
+
+    nodefirefox2:
+        image: selenium/node-firefox-debug
+        platform: linux
+        privileged: true
+        depends_on:
+            - progrid2
+        ports:
+            - 5901  
+        environment:
+            - HUB_PORT_4444_TCP_ADDR=progrid2
+            - HUB_PORT_4444_TCP_PORT=4444
+        networks:
+            - selenuim_grid_demo
+    
+    procucumber2:
+        image: cucumberprotest
+        container_name: protractorcucumber
+        platform: linux
+        depends_on:
+            - progrid2
+            - nodechrome2
+            - nodefirefox2
+        ports:
+            - 6000
+        volumes:
+            - .:/cucumberProtractorTest
+        networks:
+            - selenuim_grid_demo
+        command: bash -c "cp -R ../cucumberProtractorTest/* . && tail -F anything" 
+
+networks:
+    selenuim_grid_demo:

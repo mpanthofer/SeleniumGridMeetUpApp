@@ -1,0 +1,11 @@
+{
+  "name": "seleniumdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "protractor-test": "cp -R ../cucumberProtractorTest/* . && protractor config.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

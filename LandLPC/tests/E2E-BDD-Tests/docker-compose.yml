@@ -1,0 +1,62 @@
+#Mainter : Promode
+version: '2.4'
+
+services:
+    progrid:
+        image: selenium/hub
+        platform: linux
+        privileged: true
+        ports:
+            - 4444
+        environment:
+            - GRID_TIMEOUT=240000
+            - GRID_BROWSER_TIMEOUT=240000
+        networks:
+            - progrid_grid_internal
+
+    nodechrome:
+        image: selenium/node-chrome-debug
+        platform: linux
+        privileged: true
+        depends_on:
+            - progrid
+        ports:
+            - 5900
+        environment:
+            - HUB_PORT_4444_TCP_ADDR=progrid
+            - HUB_PORT_4444_TCP_PORT=4444
+        networks:
+            - progrid_grid_internal
+
+    nodefirefox:
+        image: selenium/node-firefox-debug
+        platform: linux
+        privileged: true
+        depends_on:
+            - progrid
+        ports:
+            - 5901  
+        environment:
+            - HUB_PORT_4444_TCP_ADDR=progrid
+            - HUB_PORT_4444_TCP_PORT=4444
+        networks:
+            - progrid_grid_internal
+    
+    procucumber:
+        image: cpframework
+        container_name: cproframework
+        platform: linux
+        depends_on:
+            - progrid
+            - nodechrome
+            - nodefirefox
+        ports:
+            - 6000
+        volumes:
+            - .:/cucumberProtractorTest
+        networks:
+            - progrid_grid_internal
+        command: bash -c "cp -R ../cucumberProtractorTest/* . && npm install && npm audit fix && tail -F anything" 
+
+networks:
+    progrid_grid_internal:
